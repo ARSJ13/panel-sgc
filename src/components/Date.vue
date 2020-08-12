@@ -6,6 +6,7 @@
 
 <script>
   export default {
+    name: 'Data',
     data() {
       return {
         state: 'readonly'

@@ -34,12 +34,26 @@ html, body, #app{
 body{
   background: var(--color-background);
 }
-
 #app{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 15vh auto 5vh;
+  grid-template-areas: 
+    "Header"
+    " Container"
+    "Footer";
+  row-gap: 5rem;
 }
+#app>Header{
+  grid-area: Header;
+}
+#app>.container-app{
+  grid-area: Container;
+}
+#app>Footer{
+  grid-area: Footer;
+}
+
 
 body, input, button, textarea{
   font: 500 1.6rem Poppins;

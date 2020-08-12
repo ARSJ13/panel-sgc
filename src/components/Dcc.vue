@@ -10,13 +10,13 @@
         </tr>
         <tr>
           <td> SGC </td>
-          <td :class="{statusE: statusError}"> {{ apiData.sgc }} </td>
-          <td :class="{statusE: statusError}"> {{ apiStatus.sgc }} </td>
+          <td :class="status.sgc">{{ sgc.data.status ? sgc.data.status : status.sgc }}</td>
+          <td :class="status.sgc">{{ sgc.status }}</td>
         </tr>
         <tr>
           <td> PJE </td>
-          <td :class="{statusE: statusError}"> {{apiData.pje}} </td>
-          <td :class="{statusE: statusError}"> {{apiStatus.pje}} </td>
+          <td :class="status.pje"> {{ pje.data.status ? pje.data.status : status.pje }} </td>
+          <td :class="status.pje"> {{ pje.status }} </td>
         </tr>
       </table>
     </div>
@@ -25,62 +25,82 @@
 
 <script>
 
+import { mapState, mapMutations } from 'vuex'
+
 export default {
-  name: 'Status',
-  data() {
+  name: 'Dcc',
+  data(){
     return {
-      url: {
-        sgc: '',
-        pje: ''
-      },
-      apiData: {
-        sgc: '',
-        pje: ''
-      },
-      apiStatus: {
-        sgc: '',
-        pje: ''
-      },
-      statusError: true
+      status: {
+        sgc: 'loading',
+        pje: 'loading'
+      }
     }
   },
+  computed: {
+    ...mapState ({
+      sgc: state => state.dcc.data.sgc,
+      pje: state => state.dcc.data.pje
+    }),
+    ...mapMutations({})
+  },
   methods: {
-    UpdatePje(){
-      setInterval( async () => {
-        this.url.pje = await this.$http.get('https://pje-ead-gateway.tjdft.jus.br/actuator/health')
+    updateSgc(){
+        const response = this.$http.get('http://localhost:4567/sgc/')
           .then((res) =>{
-            this.apiData.pje = res.data.status
-            this.apiStatus.pje = res.status
-            console.log('success')
+            this.$store.commit('updateSgc', res)
+            this.status.sgc = 'success'
           })
           .catch(error => {
             console.error(error)
-            this.$toasted.global.defaultError();
-            let errorSgc = this.apiData.sgc
-            if(errorSgc != 'UP'){
-              console.log(errorSgc)
-              this.statusError = true;
-            }
-            if(this.apiStatus.pje !== '200'){
-              this.statusError = true;
-            }
+            this.$toasted.global.defaultError()
+            this.status.sgc = 'error'
+            this.$store.commit('errorSgc')
           })
-      }, 5000)
+        return response 
+    },
+    updatePje(){
+        const response = this.$http.get('http://localhost:4567/pje/')
+          .then((res) =>{
+            this.$store.commit('updatePje', res)
+            this.status.pje = 'success'
+          })
+          .catch(error => {
+            console.error(error)
+            this.$toasted.global.defaultError()
+            this.status.pje = 'error'
+            this.$store.commit('errorPje')
+          })
+        return response 
     }
   },
   mounted() {
-    this.UpdatePje()
+    setInterval( () => {
+      this.updateSgc(),
+      this.updatePje()
+    }, 1000)
   }
 }
 </script>
 
 <style>
-.statusE{
+.loading{
+  font-size: 2rem;
+  font-weight: bold;
+  color: chocolate;
+}
+.error{
+  color: red;
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(255, 0, 0, 0.7);
+}
+
+.success{
   animation: success 4s infinite alternate;
   font-weight: bold;
   font-size: 2rem;
   text-shadow: 1px 1px 2px rgba(0, 255, 0, 0.3);
-
 }
 @keyframes success{
   from {color: green; }
@@ -88,7 +108,8 @@ export default {
 }
 .view-dcc{
   width: 30vw;
-  height: 30vh;
+  max-width: 500px;
+  max-height: 200px;
   background-color: rgba(255, 255, 255, 0.8);
   display: flex;
   flex-direction: column;
@@ -102,7 +123,6 @@ export default {
   font-size: 2rem;
   font-weight: bold;
   color: rgba(255, 255, 255, 0.9);
-  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.2);
   padding: 12px;
   width: 100%;
   border-top-left-radius: 1rem;
