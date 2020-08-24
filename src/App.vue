@@ -4,7 +4,8 @@
     <div class="container-app">
       <Dcc />
       <Tjdft />
-      <Data />
+      <!-- <Data /> -->
+      <Statistics />
     </div>
     <Footer />
   </div>
@@ -16,7 +17,8 @@
 
   import Dcc from '@/components/Dcc'
   import Tjdft from '@/components/Tjdft'
-  import Data from '@/components/Date'
+  // import Data from '@/components/Date'
+  import Statistics from '@/components/Statistics'
 export default {
   name: 'App',
   components: {
@@ -24,28 +26,39 @@ export default {
     Footer,
     Dcc,
     Tjdft,
-    Data
+    // Data,
+    Statistics
   }
 
 }
 </script>
 
 <style>
-.container-app{
-  width: 96%;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr 25%;
-  grid-template-rows: 60% 40%;
-  flex-wrap: wrap;
-}
-.container-app>Dcc{
-  grid-area: Dcc;
-}
-.container-app>Tjdft{
-  grid-area: Tjdft;
-}
-.container-app>Data{
-  grid-area: Data;
-}
+  div.container-app{
+    width: 96%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 30% 30% 1fr;
+    grid-template-rows: 60% 40%;
+    grid-template-areas: 
+    "a b c"
+    "d d d"
+    ;
+  }
+  div.container-app > Dcc{
+    display: grid;
+    grid-area: a;
+  }
+  div.container-app > Tjdft{
+    display: grid;
+    grid-area: b;
+  }
+  div.container-app > Data{
+    display: grid;
+    grid-area: c;
+  }
+  div.container-app > Statistics{
+    display: grid;
+    grid-area: d;
+  } 
 </style>

@@ -5,7 +5,8 @@ Vue.use(Toasted, {
   iconPack: 'fontawesome',
   duration: 2000,
   theme: 'bubble',
-  className: 'error'
+  className: 'error',
+  singleton: false
 })
 
 Vue.toasted.register(
@@ -14,6 +15,6 @@ Vue.toasted.register(
 )
 
 Vue.toasted.register(
-  'defaultError', ' Status code error!',
+  'defaultError', 'Status code error!',
   { type: 'error', icon: 'times', action: { class: 'error'}}
 )

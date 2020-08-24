@@ -32,7 +32,7 @@ html, body, #app{
 }
 
 body{
-  background: var(--color-background);
+  background: var(--color-text-complement);
 }
 #app{
   display: grid;

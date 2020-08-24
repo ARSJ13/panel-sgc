@@ -19,6 +19,11 @@
       readonly() {
         return this.state === 'readonly'
       }
+    },
+    mounted(){
+      setInterval( () => {
+        this.readonly()
+      }, 5000)
     }
   }
 </script>

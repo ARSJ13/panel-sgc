@@ -148,12 +148,12 @@ export default {
      this.updatePjeConsulta(),
      this.updatePjeGat(),
      this.updatePjeInt()
-    }, 1000)
+    }, 5000)
   }
 }
 </script>
 
-<style>
+<style scoped>
 .loading{
   font-size: 2rem;
   font-weight: bold;
@@ -182,13 +182,14 @@ export default {
   height: 95%;
   max-width: 500px;
   max-height: 500px;
-  background-color: rgba(255, 255, 255, 0.8);
+  background: var(--color-background);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   border-radius: 1rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 10px 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 
 }
 .title-tjdft{

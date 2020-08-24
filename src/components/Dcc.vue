@@ -78,12 +78,12 @@ export default {
     setInterval( () => {
       this.updateSgc(),
       this.updatePje()
-    }, 1000)
+    }, 5000)
   }
 }
 </script>
 
-<style>
+<style scoped>
 .loading{
   font-size: 2rem;
   font-weight: bold;

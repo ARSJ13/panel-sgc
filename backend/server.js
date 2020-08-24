@@ -71,4 +71,16 @@ app.get('/pje-integracao', async (req, res) => {
   } 
 })
 
+app.get('/estatisticas', async (req, res) => {
+
+  try {
+    const { data } = await axios('http://api.sgc.dcc.pm.df.gov.br:8082/estatisticas/sgcJob')
+    return res.json(data)
+
+  } catch (error) {
+    console.error(error);
+  }
+
+})
+
 app.listen('4567')
