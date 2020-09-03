@@ -38,6 +38,8 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+
+     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5) ;
   }
   .boxTitle{
     display: flex;

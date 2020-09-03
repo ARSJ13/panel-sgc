@@ -40,6 +40,32 @@ const store = new Vuex.Store({
           status: ''
         }
       }
+    },
+    qtd : {
+      pip: {
+        last: '',
+        total: ''
+      },
+      ma: {
+        last: '',
+        total: ''
+      },
+      sind: {
+        last: '',
+        total: ''
+      },
+      ipm: {
+        last: '',
+        total: ''
+      },
+      it: {
+        last: '',
+        total: ''
+      },
+      tce: {
+        last: '',
+        total: ''
+      }
     }
   },
   mutations: {
@@ -93,6 +119,43 @@ const store = new Vuex.Store({
       state.tjdft.data.pjeInt.data.status = 'Error'
       state.tjdft.data.pjeInt.status = 'Error'
     },
+
+    pipLast(state, data){
+      state.qtd.pip.last = data
+    },
+    pipTotal(state, data){
+      state.qtd.pip.total = data
+    },
+    maLast(state, data){
+      state.qtd.ma.last = data
+    },
+    maTotal(state, data){
+      state.qtd.ma.total = data
+    },
+    sindLast(state, data){
+      state.qtd.sind.last = data
+    },
+    sindTotal(state, data){
+      state.qtd.sind.total = data
+    },
+    ipmLast(state, data){
+      state.qtd.ipm.last = data
+    },
+    ipmTotal(state, data){
+      state.qtd.ipm.total = data
+    },
+    itLast(state, data){
+      state.qtd.it.last = data
+    },
+    itTotal(state, data){
+      state.qtd.it.total = data
+    },
+    tceLast(state, data){
+      state.qtd.tce.last = data
+    },
+    tceTotal(state, data){
+      state.qtd.tce.total = data
+    }
   }
 })
 export default store

@@ -217,6 +217,7 @@ export default {
 .table-tjdft th{
   text-transform: uppercase;
   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 200, 0.1);
 }
 .table-tjdft tr:nth-last-child(n+2){
   border-bottom: 2px solid rgba(0, 0, 255, 0.2);

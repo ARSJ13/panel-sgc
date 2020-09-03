@@ -2,10 +2,10 @@
   <div id="app">
     <Header />
     <div class="container-app">
-      <Dcc />
-      <Tjdft />
-      <!-- <Data /> -->
-      <Statistics />
+      <Dcc id="Dcc"/>
+      <Tjdft id="Tjdft"/>
+      <Statistics id="Statistics"/>
+      <Procedimentos id="Procedimentos"/>
     </div>
     <Footer />
   </div>
@@ -17,8 +17,9 @@
 
   import Dcc from '@/components/Dcc'
   import Tjdft from '@/components/Tjdft'
-  // import Data from '@/components/Date'
   import Statistics from '@/components/Statistics'
+  import Procedimentos from '@/components/Procedimentos'
+
 export default {
   name: 'App',
   components: {
@@ -26,14 +27,32 @@ export default {
     Footer,
     Dcc,
     Tjdft,
-    // Data,
-    Statistics
+    Statistics,
+    Procedimentos
   }
 
 }
 </script>
 
 <style>
+  *{
+   font-family: 'Montserrat', sans-serif;
+   text-transform: uppercase;
+   font-size: 18px;
+  }
+  div.container-app > #Dcc{
+    grid-area: a;
+  }
+  div.container-app > #Tjdft{
+    grid-area: b;
+  }
+  div.container-app > #Statistics{
+    grid-area: c;
+  }
+  div.container-app > #Procedimentos{
+    grid-area: d;
+    grid-column: 1 / 4;
+  }
   div.container-app{
     width: 96%;
     margin: 0 auto;
@@ -41,24 +60,7 @@ export default {
     grid-template-columns: 30% 30% 1fr;
     grid-template-rows: 60% 40%;
     grid-template-areas: 
-    "a b c"
-    "d d d"
-    ;
-  }
-  div.container-app > Dcc{
-    display: grid;
-    grid-area: a;
-  }
-  div.container-app > Tjdft{
-    display: grid;
-    grid-area: b;
-  }
-  div.container-app > Data{
-    display: grid;
-    grid-area: c;
-  }
-  div.container-app > Statistics{
-    display: grid;
-    grid-area: d;
+    'a b c'
+    'd d d';
   } 
 </style>

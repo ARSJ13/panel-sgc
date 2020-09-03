@@ -1,6 +1,6 @@
 <template>
   <div class="view-statistic">
-    <h2 class="title-statistic">Execução das rotinas de atualização do SGC</h2>
+    <h2 class="title-statistic">Execuções das rotinas de atualizações do SGC</h2>
     <div class="container-statistic">
       <table class="table-statistic">
         <tr>
@@ -52,8 +52,8 @@ export default {
         const data = this.$http.get('http://localhost:4567/estatisticas/')
         .then( res => {
           this.api = res.data;
+          this.style = "success";
         })
-        this.style = 'success';
         return data
       } catch (error) {
         console.error(error);
@@ -94,7 +94,7 @@ export default {
 .view-statistic{
   box-sizing: border-box;
   width: 100%;
-  height: 80%;
+  height: 95%;
   background-color: rgba(255, 255, 255, 0.8);
   display: flex;
   flex-direction: column;
@@ -130,6 +130,7 @@ export default {
 .table-statistic th{
   text-transform: uppercase;
   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 200, 0.1);
 }
 .table-statistic tr:nth-last-child(n+2){
   border-bottom: 2px solid rgba(0, 0, 255, 0.2);
