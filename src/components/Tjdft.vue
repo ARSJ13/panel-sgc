@@ -76,7 +76,7 @@ export default {
             console.error(error)
             this.$toasted.global.defaultError()
             this.status.interConsulta = 'error'
-            this.$store.commit('errorInterConsulta')
+            this.$store.commit('errorInterConsulta', error)
           })
         return response 
     },
@@ -91,7 +91,7 @@ export default {
             console.error(error)
             this.$toasted.global.defaultError()
             this.status.interEscrita = 'error'
-            this.$store.commit('errorInterEscrita')
+            this.$store.commit('errorInterEscrita', error)
           })
         return response 
     },
@@ -106,7 +106,7 @@ export default {
             console.error(error)
             this.$toasted.global.defaultError()
             this.status.pjeConsulta = 'error'
-            this.$store.commit('errorPjeConsulta')
+            this.$store.commit('errorPjeConsulta', error)
           })
         return response 
     },
@@ -121,7 +121,7 @@ export default {
             console.error(error)
             this.$toasted.global.defaultError()
             this.status.pjeGat = 'error'
-            this.$store.commit('errorPjeGat')
+            this.$store.commit('errorPjeGat', error)
           })
         return response 
     },
@@ -136,7 +136,7 @@ export default {
             console.error(error)
             this.$toasted.global.defaultError()
             this.status.pjeInt = 'error'
-            this.$store.commit('errorPjeInt')
+            this.$store.commit('errorPjeInt', error)
           })
         return response 
     },
@@ -161,7 +161,7 @@ export default {
 }
 .error{
   color: red;
-  font-size: 2rem;
+  font-size: 1.2rem;
   font-weight: bold;
   text-shadow: 1px 1px 2px rgba(255, 0, 0, 0.7);
 }

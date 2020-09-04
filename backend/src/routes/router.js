@@ -15,7 +15,7 @@ router.get('/sgc', async (req, res) => {
    return res.json(data)
        
   } catch (error) {
-    console.error(res.status(500).json('Error: ', error));
+    console.log(res.status(500).json('Error: ', error, res));
   } 
 })
 
@@ -26,7 +26,7 @@ router.get('/pje', async (req, res) => {
    return res.json(data)
        
   } catch (error) {
-    console.error(res.status(500).json('Error: ', error));
+    console.log(res.status(500).json('Error: ', error, res));
   } 
 })
 
@@ -37,7 +37,7 @@ router.get('/inter-consulta', async (req, res) => {
    return res.json(data)
        
   } catch (error) {
-    console.error(res.status(500).json('Error: ', error));
+    console.log(res.status(500).json('Error: ', error, res));
   } 
 })
 
@@ -48,7 +48,7 @@ router.get('/inter-escrita', async (req, res) => {
    return res.json(data)
        
   } catch (error) {
-    console.error(res.status(500).json('Error: ', error));
+    console.log(res.status(500).json('Error: ', error, res));
   } 
 })
 
@@ -59,7 +59,7 @@ router.get('/pje-consulta', async (req, res) => {
    return res.json(data)
        
   } catch (error) {
-    console.error(res.status(500).json('Error: ', error));
+    console.log(res.status(500).json('Error: ', error, res));
   } 
 })
 
@@ -70,7 +70,7 @@ router.get('/pje-integracao', async (req, res) => {
    return res.json(data)
        
   } catch (error) {
-    console.error(res.status(500).json('Error: ', error));
+    console.log(res.status(500).json('Error: ', error, res));
   } 
 })
 
@@ -81,7 +81,7 @@ router.get('/estatisticas', async (req, res) => {
     return res.json(data)
 
   } catch (error) {
-    console.error(res.status(500).json('Error: ', error));
+    console.log(res.status(500).json('Error: ', error, res));
   }
 
 })

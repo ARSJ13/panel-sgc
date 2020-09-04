@@ -15,6 +15,6 @@ Vue.toasted.register(
 )
 
 Vue.toasted.register(
-  'defaultError', 'Status code error!',
+  'defaultError', 'Status error!',
   { type: 'error', icon: 'times', action: { class: 'error'}}
 )

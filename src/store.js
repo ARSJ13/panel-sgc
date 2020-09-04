@@ -91,33 +91,33 @@ const store = new Vuex.Store({
       state.tjdft.data.pjeInt = data
     },
 
-    errorSgc(state){
-      state.dcc.data.sgc.data.status = 'Error'
-      state.dcc.data.sgc.status = 'Error'
+    errorSgc(state, data){
+      state.dcc.data.sgc.data.status = data
+      state.dcc.data.sgc.status = data
     },
-    errorPje(state){
-      state.dcc.data.pje.data.status = 'Error'
-      state.dcc.data.pje.status = 'Error'
+    errorPje(state, data){
+      state.dcc.data.pje.data.status = data
+      state.dcc.data.pje.status = data
     },
-    errorInterConsulta(state){
-      state.tjdft.data.interConsulta.statusText = 'Error'
-      state.tjdft.data.interConsulta.status = 'Error'
+    errorInterConsulta(state, data){
+      state.tjdft.data.interConsulta.statusText = data
+      state.tjdft.data.interConsulta.status = data
     },
-    errorInterEscrita(state){
-      state.tjdft.data.interEscrita.statusText = 'Error'
-      state.tjdft.data.interEscrita.status = 'Error'
+    errorInterEscrita(state, data){
+      state.tjdft.data.interEscrita.statusText = data
+      state.tjdft.data.interEscrita.status = data
     },
-    errorPjeConsulta(state){
-      state.tjdft.data.pjeConsulta.statusText = 'Error'
-      state.tjdft.data.pjeConsulta.status = 'Error'
+    errorPjeConsulta(state, data){
+      state.tjdft.data.pjeConsulta.statusText = data
+      state.tjdft.data.pjeConsulta.status = data
     },
-    errorPjeGat(state){
-      state.tjdft.data.pjeGat.data.status = 'Error'
-      state.tjdft.data.pjeGat.status = 'Error'
+    errorPjeGat(state, data){
+      state.tjdft.data.pjeGat.data.status = data
+      state.tjdft.data.pjeGat.status = data
     },
-    errorPjeInt(state){
-      state.tjdft.data.pjeInt.data.status = 'Error'
-      state.tjdft.data.pjeInt.status = 'Error'
+    errorPjeInt(state, data){
+      state.tjdft.data.pjeInt.data.status = data
+      state.tjdft.data.pjeInt.status = data
     },
 
     pipLast(state, data){

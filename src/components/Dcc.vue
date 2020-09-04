@@ -55,7 +55,7 @@ export default {
             console.error(error)
             this.$toasted.global.defaultError()
             this.status.sgc = 'error'
-            this.$store.commit('errorSgc')
+            this.$store.commit('errorSgc', error)
           })
         return response 
     },
@@ -69,7 +69,7 @@ export default {
             console.error(error)
             this.$toasted.global.defaultError()
             this.status.pje = 'error'
-            this.$store.commit('errorPje')
+            this.$store.commit('errorPje', error)
           })
         return response 
     }
@@ -91,7 +91,7 @@ export default {
 }
 .error{
   color: red;
-  font-size: 2rem;
+  font-size: 1.2rem;
   font-weight: bold;
   text-shadow: 1px 1px 2px rgba(255, 0, 0, 0.7);
 }
