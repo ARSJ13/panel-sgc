@@ -33,7 +33,7 @@ router.get('/pje', async (req, res) => {
 router.get('/inter-consulta', async (req, res) => {
 
   try {
-   const { data } = await axios('https://pje-ead.tjdft.jus.br/pje/intercomunicacao?wsdl')
+   const { data } = await axios('https://pje-mni-consulta.tjdft.jus.br/consultapublica/intercomunicacao?wsdl')
    return res.json(data)
        
   } catch (error) {
@@ -44,7 +44,7 @@ router.get('/inter-consulta', async (req, res) => {
 router.get('/inter-escrita', async (req, res) => {
 
   try {
-   const { data } = await axios('https://pje-ead.tjdft.jus.br/pje/intercomunicacao?wsdl')
+   const { data } = await axios('https://pje-mni.tjdft.jus.br/pje/intercomunicacao?wsdl')
    return res.json(data)
        
   } catch (error) {
@@ -55,7 +55,7 @@ router.get('/inter-escrita', async (req, res) => {
 router.get('/pje-consulta', async (req, res) => {
 
   try {
-   const { data } = await axios('https://pje-ead.tjdft.jus.br/pje/ConsultaPJe?wsdl')
+   const { data } = await axios('https://pje-mni-consulta.tjdft.jus.br/consultapublica/ConsultaPJe?wsdl')
    return res.json(data)
        
   } catch (error) {
@@ -66,7 +66,7 @@ router.get('/pje-consulta', async (req, res) => {
 router.get('/pje-integracao', async (req, res) => {
 
   try {
-   const { data } = await axios('https://pje-integracao-ead.tjdft.jus.br/actuator/health')
+   const { data } = await axios('https://pje-integracao.tjdft.jus.br/actuator/health')
    return res.json(data)
        
   } catch (error) {

@@ -38,7 +38,7 @@ export default {
   *{
    font-family: 'Montserrat', sans-serif;
    text-transform: uppercase;
-   font-size: 18px;
+   font-size: 23px;
   }
   div.container-app > #Dcc{
     grid-area: a;

@@ -129,10 +129,9 @@ export default {
         const response = this.$http.get('http://localhost:4567/pje-integracao/')
           .then((res) =>{
             this.$store.commit('updatePjeInt', res)
-            // console.log(res)
          this.status.pjeInt = 'success'
           })
-          .catch(error => {
+          .catch((error) => {
             console.error(error)
             this.$toasted.global.defaultError()
             this.status.pjeInt = 'error'
