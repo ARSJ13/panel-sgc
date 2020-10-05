@@ -93,7 +93,7 @@ const procedimentos = {
   qtd : router.get(`/procedimentos-qtd/:id`, (req, res) => {  
     try {
       let id = req.params;
-      db.query(`SELECT COUNT(*) FROM dcc.procedimento WHERE procedimento_tipo_id=${id.id}&&procedimento_status_id!=7&&procedimento_status_id!=15;`, (error, results, fields) =>{
+      db.query(`SELECT COUNT(*) FROM dcc.procedimento WHERE procedimento_tipo_id=${id.id}&&procedimento_status_id!=7&&procedimento_status_id!=15&&procedimento_status_id!=2;`, (error, results, fields) =>{
       return res.json(results);
       })
     } catch (error) {
