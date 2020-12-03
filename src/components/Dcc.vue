@@ -109,7 +109,8 @@ export default {
 .view-dcc{
   width: 30vw;
   max-width: 500px;
-  max-height: 200px;
+  max-height: 300px;
+  height: 50%;
   background-color: rgba(255, 255, 255, 0.8);
   display: flex;
   flex-direction: column;

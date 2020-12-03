@@ -1,5 +1,5 @@
 :root {
-  font-size: 70%;
+  font-size: 60%;
 
   --color-background: #F0F0F7;
   --color-primary-lighter: #9871F5;
@@ -66,6 +66,6 @@ body, input, button, textarea{
 
 @media (min-width: 700px){
   :root {
-    font-size: 80%;
+    font-size: 73%;
   }
 }
