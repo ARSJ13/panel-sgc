@@ -17,25 +17,25 @@
         </tr>
         <tr v-if="api">
           <td>{{api[0].step ? 'Unidades' : error.status }}</td>
-          <td :class="updateUnidades">{{api[0].status ? api[0].status : status.unidades}}</td>
+          <td :class="unidades">{{api[0].status ? api[0].status : status.unidades}}</td>
           <td class="normal">{{api[0].qtdAtualizados}}</td>
           <td class="normal">{{date(0)}}</td>
         </tr>
         <tr v-if="api">
           <td>{{api[1].step ? 'Novos policiais' : error.status }}</td>
-          <td :class="updateNovos">{{api[1].status ? api[1].status : status.novosPoliciais}}</td>
+          <td :class="novosPoliciais">{{api[1].status ? api[1].status : status.novosPoliciais}}</td>
           <td class="normal">{{api[1].qtdAtualizados}}</td>
           <td class="normal">{{date(1)}}</td>
         </tr>
         <tr v-if="api">
           <td>{{api[2].step ? 'Posto / Graduação' : error.status }}</td>
-          <td :class="updateGraduacao">{{api[2].status ? api[2].status : status.postoGraduacao}}</td>
+          <td :class="postoGraduacao">{{api[2].status ? api[2].status : status.postoGraduacao}}</td>
           <td class="normal">{{api[2].qtdAtualizados}}</td>
           <td class="normal">{{date(2)}}</td>
         </tr>
         <tr v-if="api">
           <td>{{api[3].step ? 'Unidade do policial' : error.status }}</td>
-          <td :class="updateUnidPolicias">{{api[3].status ? api[3].status : status.unidadePolicial}}</td>
+          <td :class="unidadePolicial">{{api[3].status ? api[3].status : status.unidadePolicial}}</td>
           <td class="normal">{{api[3].qtdAtualizados}}</td>
           <td class="normal">{{date(3)}}</td>
         </tr>
@@ -45,77 +45,37 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex';
 export default {
   data(){
     return {
-      api: '',
-      status : {
-        unidades : 'loading',
-        novosPoliciais: 'loading',
-        postoGraduacao: 'loading',
-        unidadePolicial: 'loading'
-      }
+      api: ''
     }
   },
   computed: {
-    updateUnidades () {
-      return this.unidades
-    },
-    updateNovos () {
-      return this.novosPoliciais
-    },
-    updateGraduacao () {
-      return this.postoGraduacao
-    },
-    updateUnidPolicias () {
-      return this.unidadePolicial
-    }
+   ...mapState({
+    unidades : state => state.status.unidades,
+    novosPoliciais: state => state.status.novosPoliciais,
+    postoGraduacao: state => state.status.postoGraduacao,
+    unidadePolicial: state => state.status.unidadePolicial
+   }),
+   ...mapMutations({})
   },
   methods: {
     apiUpdate(){
       try {
         const data = this.$http.get('http://localhost:4567/estatisticas/')
         .then( res => {
-          this.api = res.data;
-          for (let index = 0; index < this.api.length; index++) {
-          
-            if(this.api[index].status === "COMPLETED"){
-              switch (index) {
-                case 0:
-                  this.unidades = 'success'
-                   break;
-                case 1:
-                  this.novosPoliciais = 'success'
-                   break;
-                case 2:
-                  this.postoGraduacao = 'success'
-                   break;
-                case 3:
-                  this.unidadePolicial = 'success'
-                   break;
-                default:
-                  break;
-              }  
-            }
-            if(this.api[index].status === "FAILED"){
-              switch (index) {
-                case 0:
-                  this.unidades = 'failed'
-                   break;
-                case 1:
-                  this.novosPoliciais = 'failed'
-                   break;
-                case 2:
-                  this.postoGraduacao = 'failed'
-                   break;
-                case 3:
-                  this.unidadePolicial = 'failed'
-                   break;
-                default:
-                  break;
-              }  
-            }
-          }
+          const { data } = res
+          const status0 = data[0].status;
+          const status1 = data[1].status;
+          const status2 = data[2].status;
+          const status3 = data[3].status;
+          this.api = data;
+          this.$store.commit('updateUnidades', status0)
+          this.$store.commit('updateNovosPoliciais', status1)
+          this.$store.commit('updatePostoGraduacao', status2)
+          this.$store.commit('updateUnidadePolicial', status3)
         })
         return data
       } catch (error) {
@@ -143,13 +103,13 @@ export default {
   font-weight: bold;
   color: chocolate;
 }
-.success{
+.COMPLETED, .STARTED{
   color: green;
   font-weight: bold;
   font-size: 2rem;
   text-shadow: 1px 1px 2px rgba(0, 255, 0, 0.3);
 }
-.error, .failed{
+.error, .ERROR, .FAILED{
   color: red;
   font-size: 2rem;
   font-weight: bold;

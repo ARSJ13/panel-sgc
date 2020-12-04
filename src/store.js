@@ -66,9 +66,28 @@ const store = new Vuex.Store({
         last: '',
         total: ''
       }
+    },
+    status : {
+      unidades : 'loading',
+      novosPoliciais: 'loading',
+      postoGraduacao: 'loading',
+      unidadePolicial: 'loading'
     }
   },
   mutations: {
+    updateUnidades(state, data){
+      state.status.unidades = data
+    },
+    updateNovosPoliciais(state, data){
+      state.status.novosPoliciais = data
+    },
+    updatePostoGraduacao(state, data){
+      state.status.postoGraduacao = data
+    },
+    updateUnidadePolicial(state, data){
+      state.status.unidadePolicial = data
+    },
+
     updateSgc(state, data){
       state.dcc.data.sgc = data
     },
