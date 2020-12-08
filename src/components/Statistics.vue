@@ -13,31 +13,24 @@
           <td class="loading">LOADING</td>
           <td class="loading">LOADING</td>
           <td class="loading">LOADING</td>
-          <td class="loading">LOADING</td>
         </tr>
         <tr v-if="api">
-          <td>{{api[0].step ? 'Unidades' : error.status }}</td>
-          <td :class="unidades">{{api[0].status ? api[0].status : status.unidades}}</td>
-          <td class="normal">{{api[0].qtdAtualizados}}</td>
-          <td class="normal">{{date(0)}}</td>
-        </tr>
-        <tr v-if="api">
-          <td>{{api[1].step ? 'Novos policiais' : error.status }}</td>
-          <td :class="novosPoliciais">{{api[1].status ? api[1].status : status.novosPoliciais}}</td>
+          <td>{{api[1].step ? 'Unidades' : error.status }}</td>
+          <td :class="unidades">{{api[1].status ? api[1].status : status.unidades}}</td>
           <td class="normal">{{api[1].qtdAtualizados}}</td>
           <td class="normal">{{date(1)}}</td>
         </tr>
         <tr v-if="api">
-          <td>{{api[2].step ? 'Posto / Graduação' : error.status }}</td>
-          <td :class="postoGraduacao">{{api[2].status ? api[2].status : status.postoGraduacao}}</td>
+          <td>{{api[2].step ? 'Novos policiais' : error.status }}</td>
+          <td :class="novosPoliciais">{{api[2].status ? api[2].status : status.novosPoliciais}}</td>
           <td class="normal">{{api[2].qtdAtualizados}}</td>
           <td class="normal">{{date(2)}}</td>
         </tr>
         <tr v-if="api">
-          <td>{{api[3].step ? 'Unidade do policial' : error.status }}</td>
-          <td :class="unidadePolicial">{{api[3].status ? api[3].status : status.unidadePolicial}}</td>
-          <td class="normal">{{api[3].qtdAtualizados}}</td>
-          <td class="normal">{{date(3)}}</td>
+          <td>{{api[0].step ? 'Unidade do policial' : error.status }}</td>
+          <td :class="unidadePolicial">{{api[0].status ? api[0].status : status.unidadePolicial}}</td>
+          <td class="normal">{{api[0].qtdAtualizados}}</td>
+          <td class="normal">{{date(0)}}</td>
         </tr>
       </table>
     </div>
@@ -70,12 +63,10 @@ export default {
           const status0 = data[0].status;
           const status1 = data[1].status;
           const status2 = data[2].status;
-          const status3 = data[3].status;
           this.api = data;
-          this.$store.commit('updateUnidades', status0)
-          this.$store.commit('updateNovosPoliciais', status1)
-          this.$store.commit('updatePostoGraduacao', status2)
-          this.$store.commit('updateUnidadePolicial', status3)
+          this.$store.commit('updateUnidades', status1)
+          this.$store.commit('updateNovosPoliciais', status2)
+          this.$store.commit('updateUnidadePolicial', status0)
         })
         return data
       } catch (error) {

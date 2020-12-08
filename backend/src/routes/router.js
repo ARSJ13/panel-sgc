@@ -78,6 +78,7 @@ router.get('/estatisticas', async (req, res) => {
 
   try {
     const { data } = await axios('http://sgc.dcc.pm.df.gov.br:8082/estatisticas/sgcJob')
+    console.log(data)
     return res.json(data)
 
   } catch (error) {
