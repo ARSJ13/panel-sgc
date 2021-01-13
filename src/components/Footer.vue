@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-    <span>Copyright © <strong> DAT/STIC </strong>  2020</span>
+    <span>Copyright © <strong> DAT/STIC </strong>  2021</span>
   </footer>
 </template>
 

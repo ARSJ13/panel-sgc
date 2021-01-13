@@ -19,19 +19,19 @@
           <td>{{api[0].step ? 'Unidades' : error.status }}</td>
           <td :class="unidades">{{api[0].status ? api[0].status : status.unidades}}</td>
           <td class="normal">{{api[0].qtdAtualizados}}</td>
-          <td class="normal">{{date(0)}}</td>
+          <td v-if="api[2].status!='STARTED'" class="normal">{{date(0)}}</td>
         </tr>
         <tr v-if="api">
           <td>{{api[1].step ? 'Novos policiais' : error.status }}</td>
           <td :class="novosPoliciais">{{api[1].status ? api[1].status : status.novosPoliciais}}</td>
           <td class="normal">{{api[1].qtdAtualizados}}</td>
-          <td class="normal">{{date(1)}}</td>
+          <td v-if="api[1].status!='STARTED'" class="normal">{{date(1)}}</td>
         </tr>
         <tr v-if="api">
           <td>{{api[2].step ? 'Unidade do policial' : error.status }}</td>
           <td :class="unidadePolicial">{{api[2].status ? api[2].status : status.unidadePolicial}}</td>
           <td class="normal">{{api[2].qtdAtualizados}}</td>
-          <td class="normal">{{date(2)}}</td>
+          <td v-if="api[2].status!='STARTED'" class="normal">{{date(2)}}</td>
         </tr>
       </table>
     </div>

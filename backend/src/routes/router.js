@@ -104,7 +104,7 @@ const procedimentos = {
   ultimo : router.get(`/procedimentos-last/:id`, (req, res) => {
     try {
       let id = req.params;
-      db.query(`SELECT MAX(created_at) FROM dcc.procedimento WHERE procedimento_status_id=${id.id}`, (error, results, fields) =>{
+      db.query(`SELECT MAX(created_at) FROM dcc.procedimento WHERE procedimento_tipo_id=${id.id}`, (error, results, fields) =>{
         return res.json(results);
       })
     } catch (error) {
