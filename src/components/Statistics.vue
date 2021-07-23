@@ -61,7 +61,6 @@ export default {
         const data = this.$http.get('http://localhost:4567/estatisticas/')
         .then( res => {
           const { data } = res
-          console.log(data)
           const status0 = data[0].status;
           const status1 = data[1].status;
           const status2 = data[2].status;
